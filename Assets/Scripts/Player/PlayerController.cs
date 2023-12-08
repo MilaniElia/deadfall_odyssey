@@ -37,10 +37,6 @@ public partial class PlayerController : MonoBehaviour
     [Tooltip("Amount of force applied to the player when jumping."), SerializeField]
     private float jumpForce = 35f;
 
-	[Header("Look Settings")]
-    [Tooltip("Rotation speed of the fps controller."), SerializeField]
-    private float mouseSensitivity = 7f;
-
     [Tooltip("Approximately the amount of time it will take for the fps controller to reach maximum rotation speed."), SerializeField]
     private float rotationSmoothness = 0.05f;
 
@@ -197,6 +193,15 @@ public partial class PlayerController : MonoBehaviour
                 }
             }
         }
+        else if(keyCode == KeyCode.Escape)
+        {
+            Debug.Log("Opening menu");
+            GameObject menu = GameObject.FindGameObjectWithTag("Menu");
+            if(menu != null)
+            {
+                menu.GetComponent<GameMenu>().EnableMenu();
+            }
+        }
     }
 
     private void OnDrawGizmos()
@@ -225,13 +230,13 @@ public partial class PlayerController : MonoBehaviour
     /// Returns the target rotation of the camera around the y axis with no smoothing.
     private float RotationXRaw
     {
-        get { return input.RotateX * mouseSensitivity; }
+        get { return input.RotateX * Settings.MouseXSensitivity; }
     }
 			
     /// Returns the target rotation of the camera around the x axis with no smoothing.
     private float RotationYRaw
     {
-        get { return input.RotateY * mouseSensitivity; }
+        get { return input.RotateY * Settings.MouseYSensitivity; }
     }
 			
     /// Clamps the rotation of the camera around the x axis

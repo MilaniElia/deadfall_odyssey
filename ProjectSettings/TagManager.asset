@@ -10,6 +10,7 @@ TagManager:
   - AmmoPack
   - Granade
   - Enemy
+  - Menu
   layers:
   - Default
   - TransparentFX
