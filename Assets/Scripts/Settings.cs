@@ -43,9 +43,9 @@ public class Settings
         }
     }
 
-    private static float _mouseSensitivityX;
-    private static float _mouseSensitivityY;
-    private static float _volume;
+    private static float _mouseSensitivityX = 1;
+    private static float _mouseSensitivityY = 1;
+    private static float _volume = -10;
     private static AudioMixer _audioMixer;
 
     private Settings()
@@ -54,18 +54,18 @@ public class Settings
     }
 
 
-    public static void SetAudioVolume(float newVolume)
+    public void SetAudioVolume(float newVolume)
     {
         _volume = newVolume;
-        _audioMixer.SetFloat("mainVolume", _volume);
+        _audioMixer.SetFloat("MasterVolume", _volume);
     }
 
-    public static void SetMouseXSensitivity(float newSensitivity)
+    public void SetMouseXSensitivity(float newSensitivity)
     {
         _mouseSensitivityX = newSensitivity;
     }
 
-    public static void SetMouseYSensitivity(float newSensitivity)
+    public void SetMouseYSensitivity(float newSensitivity)
     {
         _mouseSensitivityY = newSensitivity;
     }

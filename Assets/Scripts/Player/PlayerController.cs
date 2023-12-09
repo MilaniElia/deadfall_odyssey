@@ -199,7 +199,14 @@ public partial class PlayerController : MonoBehaviour
             GameObject menu = GameObject.FindGameObjectWithTag("Menu");
             if(menu != null)
             {
-                menu.GetComponent<GameMenu>().EnableMenu();
+                if (!menu.GetComponent<GameMenu>().IsPaused)
+                {
+                    menu.GetComponent<GameMenu>().EnableMenu();
+                }
+                else
+                {
+                    menu.GetComponent<GameMenu>().DisableMenu();
+                }
             }
         }
     }

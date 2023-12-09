@@ -74,8 +74,8 @@
     <Compile Include="Assets\Scripts\Enemy\WanderState.cs" />
     <Compile Include="Assets\Scripts\GameOver.cs" />
     <Compile Include="Assets\Scripts\HealthBar.cs" />
-    <Compile Include="Assets\Scripts\InGameMenu.cs" />
     <Compile Include="Assets\Scripts\KeyButtonTrigger.cs" />
+    <Compile Include="Assets\Scripts\Menu.cs" />
     <Compile Include="Assets\Scripts\Objects\Ammunition.cs" />
     <Compile Include="Assets\Scripts\Objects\HealthPickUp.cs" />
     <Compile Include="Assets\Scripts\Objects\Interactable.cs" />
