@@ -162,13 +162,30 @@ public partial class PlayerController : MonoBehaviour
     {
 		arms.position = transform.position + transform.TransformVector(armPosition);
         PlayFootstepSounds();
+        CheckForVictory();
+    }
 
-        if (currentHealth < 0.1f && gameOverCanvas)
+    private void CheckForVictory()
+    {
+        if(currentHealth < 0 || !ThereAreZombiesAlive())
         {
-            gameOverCanvas.gameObject.SetActive(true);
-            Time.timeScale = 0.0f;
+            if (gameOverCanvas)
+            {
+                gameOverCanvas.gameObject.SetActive(true);
+                Time.timeScale = 0.0f;
+            }
         }
     }
+
+    private bool ThereAreZombiesAlive()
+    {
+        if(GameObject.FindGameObjectsWithTag("Enemy") != null && GameObject.FindGameObjectsWithTag("Enemy").Length > 0)
+        {
+            return true;
+        }
+        return false;
+    }
+
 
     private void OnKeyPressed(KeyCode keyCode)
     {

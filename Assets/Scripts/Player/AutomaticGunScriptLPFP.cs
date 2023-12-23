@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using TMPro;
 
 public class AutomaticGunScriptLPFP : MonoBehaviour {
 
@@ -113,10 +114,10 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 	public AudioSource shootAudioSource;
 
 	[Header("UI Components")]
-	public Text currentWeaponText;
-	public Text currentAmmoText;
-	public Text totalAmmoText;
-	public Text totalGranadeText;
+	public TMP_Text currentWeaponText;
+	public TMP_Text currentAmmoText;
+	public TMP_Text totalAmmoText;
+	public TMP_Text totalGranadeText;
 	public GameObject settingsPanel;
 
 	[System.Serializable]

@@ -1,26 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameOver : MonoBehaviour
 {
-    [Header("Score")]
-    public int totalScore;
-    public Text totalScoreText;
+    [Header("Score"), SerializeField]
+    private TMP_Text totalScoreText;
 
 
     private void Start()
     {
-        totalScore = 0;
-    }
-
-
-    public void Update()
-    {
+        Time.timeScale = 0f;
         SetCursorVisible(true);
-        totalScore = (int)FindObjectOfType<PlayerController>().totalScore;
-        totalScoreText.text = totalScore.ToString();
+        totalScoreText.text = $"Score: {(int)FindObjectOfType<PlayerController>().totalScore}";
     }
 
     public void SetCursorVisible(bool vis)

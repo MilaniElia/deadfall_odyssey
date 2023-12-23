@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using TMPro;
 
 // ----- Low Poly FPS Pack Free Version -----
 public class HandgunScriptLPFP : MonoBehaviour {
@@ -113,10 +114,10 @@ public class HandgunScriptLPFP : MonoBehaviour {
 	public AudioSource shootAudioSource;
 
 	[Header("UI Components")]
-	public Text timescaleText;
-	public Text currentWeaponText;
-	public Text currentAmmoText;
-	public Text totalAmmoText;
+	public TMP_Text timescaleText;
+	public TMP_Text currentWeaponText;
+	public TMP_Text currentAmmoText;
+	public TMP_Text totalAmmoText;
 
 	[System.Serializable]
 	public class prefabs
