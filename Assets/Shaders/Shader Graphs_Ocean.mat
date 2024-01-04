@@ -19,11 +19,49 @@ Material:
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - Texture2D_23B0F242:
+        m_Texture: {fileID: 2800000, guid: e816b689b1541a54984ddb0385c765b2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_9f90efb81469478ab3e82bd7bcc3bee1:
+        m_Texture: {fileID: 2800000, guid: 4b850ea2e388d1e4382850459faf3f5b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_4309CA7D: 0.16
-    - Vector1_7338A2ED: -0.27
+    - Vector1_319599c9f3b44c64808f36bfc5fcfe45: 1
+    - Vector1_4309CA7D: 0.43
+    - Vector1_600113d39c1349cb9c1de781b01dd9e4: 0.01
+    - Vector1_6d59a41e3978473da19d3f870fb37f8b: 0.5
+    - Vector1_6e3ec60bb33c4fa9bf80e17fd3025f05: 0.5
+    - Vector1_7338A2ED: 0
+    - Vector1_7cb92d0d180947f78cf24e1b8258ba7f: 0.1
+    - Vector1_87efe1801dc34bb8bf5d1881e19c8fec: 0.75
     - Vector1_AFE106E0: 0
-    - Vector1_BF613AF0: 0.5
+    - Vector1_BF613AF0: 0.1
+    - Vector1_b9d6fea4ece54cb8a0f4ddd992eee52a: 0.3
+    - Vector1_ba7708ffa09a430a85bd04e493db18b0: 30
+    - Vector1_ce231e173bd747409d119af03b5be360: 1
+    - Vector1_e8660bc3caf34820acc20376d36abe52: 1
+    - Vector1_efb142f16c724ff08731a3d41289baae: 0.1
+    - Vector1_efb142f16c724ff08731a3d41289baae_1: 0.1
     m_Colors:
-    - Color_5FD08FFF: {r: 0.3290762, g: 0.6625561, b: 0.8018868, a: 1}
+    - Color_190dc53ee79a45bfa16c2fc94b4bc9f0: {r: 1, g: 1, b: 1, a: 1}
+    - Color_5FD08FFF: {r: 0.18222678, g: 0.36998844, b: 0.6132076, a: 1}
+    - Color_761e1ba760f34bee847f1e23cd285d83: {r: 0.16740832, g: 0.28399244, b: 0.6226415,
+        a: 1}
+    - Vector4_d757ebe493404d3a85b7edbeb9f00b98: {r: 50, g: 50, b: 0, a: 0}
+    - Vector4_d757ebe493404d3a85b7edbeb9f00b98_1: {r: -50, g: 50, b: 0, a: 0}
+  m_BuildTextureStacks: []
