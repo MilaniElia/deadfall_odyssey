@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_Ocean
+  m_Name: Ocean
   m_Shader: {fileID: -6465566751694194690, guid: d8a322b3ce532cc4fae3c7588acf9257,
     type: 3}
   m_ShaderKeywords: 
@@ -41,24 +41,25 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_319599c9f3b44c64808f36bfc5fcfe45: 2
+    - Vector1_319599c9f3b44c64808f36bfc5fcfe45: 5
     - Vector1_4309CA7D: 0.43
     - Vector1_600113d39c1349cb9c1de781b01dd9e4: 0.01
     - Vector1_68ccb96e540741bfbb313ca4b69df08d: 1
+    - Vector1_6ce53c7c377b40b581d6d52ebf042562: 0.1
     - Vector1_6d59a41e3978473da19d3f870fb37f8b: 0.75
-    - Vector1_6e3ec60bb33c4fa9bf80e17fd3025f05: 0.5
+    - Vector1_6e3ec60bb33c4fa9bf80e17fd3025f05: 1
     - Vector1_7338A2ED: 0
-    - Vector1_7cb92d0d180947f78cf24e1b8258ba7f: 0.1
+    - Vector1_7cb92d0d180947f78cf24e1b8258ba7f: 0.2
     - Vector1_87efe1801dc34bb8bf5d1881e19c8fec: 1
     - Vector1_AFE106E0: 0
     - Vector1_BF613AF0: 0.1
     - Vector1_b9d6fea4ece54cb8a0f4ddd992eee52a: 0.3
     - Vector1_ba7708ffa09a430a85bd04e493db18b0: 30
     - Vector1_ce231e173bd747409d119af03b5be360: 1
-    - Vector1_d0d5a0cfdb58478bb810aef185ff4ad4: 2
-    - Vector1_e8660bc3caf34820acc20376d36abe52: 1
-    - Vector1_efb142f16c724ff08731a3d41289baae: 0.1
-    - Vector1_efb142f16c724ff08731a3d41289baae_1: 0.2
+    - Vector1_d0d5a0cfdb58478bb810aef185ff4ad4: 1
+    - Vector1_e8660bc3caf34820acc20376d36abe52: 2
+    - Vector1_efb142f16c724ff08731a3d41289baae: 0.03
+    - Vector1_efb142f16c724ff08731a3d41289baae_1: 0.03
     m_Colors:
     - Color_190dc53ee79a45bfa16c2fc94b4bc9f0: {r: 1, g: 1, b: 1, a: 1}
     - Color_5FD08FFF: {r: 0.18222678, g: 0.36998844, b: 0.6132076, a: 1}

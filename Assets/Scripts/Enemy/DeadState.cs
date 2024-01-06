@@ -4,28 +4,18 @@ using UnityEngine;
 
 public class DeadState : State
 {
-    public DeadState(EnemyAi enemy) : base(enemy)
+    public DeadState(EnemyAI enemy) : base(enemy)
     {
         stateName = "Dead";
     }
 
     public override void Action()
     {
-        enemy.navMeshA.isStopped = true;
-        enemy.anim.enabled = false;
-        enemy.SetColliderBodyState(true);
-        enemy.SetRigidBodyState(false);
-        enemy.targetEnemy.enabled = false;
-        enemy.upperCanvas.enabled = false;
-    }
-
-    public override void OnStateEnter()
-    {
-        Debug.Log("Entering Dead State");
-    }
-
-    public override void OnStateExit()
-    {
-        Debug.Log("Exiting Dead State");
+        Enemy.Agent.isStopped = true;
+        Enemy.Anim.enabled = false;
+        Enemy.SetColliderBodyState(true);
+        Enemy.SetRigidBodyState(false);
+        Enemy.targetEnemy.enabled = false;
+        Enemy.upperCanvas.enabled = false;
     }
 }

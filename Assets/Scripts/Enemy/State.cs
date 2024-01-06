@@ -1,19 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public abstract class State
 {
-    protected EnemyAi enemy;
+    protected EnemyAI Enemy;
     public string stateName;
 
     public abstract void Action();
-    public virtual void OnStateEnter() { }
-    public virtual void OnStateExit() { }
+    public virtual void OnStateEnter() { Debug.Log($"{Enemy.name} - Entering in {stateName}"); }
+    public virtual void OnStateExit() {  }
     public virtual void GetState() { Debug.Log(stateName); }
 
-    public State(EnemyAi enemy)
+    public State(EnemyAI enemy)
     {
-        this.enemy = enemy;
+        this.Enemy = enemy;
     }
 }

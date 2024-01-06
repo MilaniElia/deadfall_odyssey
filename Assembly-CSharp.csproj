@@ -66,7 +66,7 @@
     <Compile Include="Assets\Low Poly FPS Pack - Free (Sample)\Components\Scripts\Casings_&amp;_Projectiles\CasingScript.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerKeyboardListener\InputManager.cs" />
     <Compile Include="Assets\Low Poly FPS Pack - Free (Sample)\Components\Scripts\Explosions_&amp;_Impacts\ExplosionScript.cs" />
-    <Compile Include="Assets\Scripts\Enemy\EnemyAi.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyAI.cs" />
     <Compile Include="Assets\Scripts\HealthBar.cs" />
     <Compile Include="Assets\Low Poly FPS Pack - Free (Sample)\Components\Scripts\Explosions_&amp;_Impacts\ImpactScript.cs" />
     <Compile Include="Assets\Scripts\Enemy\State.cs" />
@@ -80,11 +80,14 @@
     <Compile Include="Assets\Scripts\Objects\Interactable.cs" />
     <Compile Include="Assets\Scripts\Objects\Ammunition.cs" />
     <Compile Include="Assets\Scripts\Enemy\DeadState.cs" />
+    <Compile Include="Assets\Scripts\Objects\BuoyancyObject\ModifyObjectMesh.cs" />
     <Compile Include="Assets\Scripts\WinScript.cs" />
     <Compile Include="Assets\Scripts\GameOver.cs" />
+    <Compile Include="Assets\Scripts\Objects\BuoyancyObject\ObjectPhysics.cs" />
     <Compile Include="Assets\Scripts\Enemy\AttackState.cs" />
     <Compile Include="Assets\Low Poly FPS Pack - Free (Sample)\Components\Scripts\Misc\LookAtCamera.cs" />
     <Compile Include="Assets\Low Poly FPS Pack - Free (Sample)\Components\Scripts\Weapon_Scripts\HandgunScriptLPFP.cs" />
+    <Compile Include="Assets\Scripts\Objects\BuoyancyObject\BuonancyObject.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Enemy\WanderState.cs" />
     <Compile Include="Assets\Scripts\UI\GameMenu.cs" />

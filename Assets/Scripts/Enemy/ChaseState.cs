@@ -6,49 +6,40 @@ public class ChaseState : State
 {
     private float chasingSpeed = 2.0f;
 
-    public ChaseState(EnemyAi enemy) : base(enemy)
+    public ChaseState(EnemyAI enemy) : base(enemy)
     {
         stateName = "Chase";
     }
 
     public override void Action()
     {
-        enemy.navMeshA.SetDestination(enemy.target.position);
-        enemy.navMeshA.speed = chasingSpeed;
-        enemy.navMeshA.isStopped = false;
-        enemy.anim.SetInteger("Condition", 0);
-        enemy.anim.SetInteger("Speed", 2);
+        Enemy.Agent.SetDestination(Enemy.Target.position);
+        Enemy.Agent.speed = chasingSpeed;
+        Enemy.Agent.isStopped = false;
+        Enemy.Anim.SetInteger("Condition", 0);
+        Enemy.Anim.SetInteger("Speed", 2);
 
         if (ReachedPlayer())
         {
-            enemy.SetState(new AttackState(enemy));
+            Enemy.Agent.isStopped = true;
+            Enemy.Agent.speed = 0;
+            Enemy.SetState(new AttackState(Enemy));
         }
-
-        if (LostPlayer())
+        else if (LostPlayer())
         {
-            enemy.SetState(new WanderState(enemy));
+            Enemy.SetState(new WanderState(Enemy));
         }
-    }
-
-    public override void OnStateEnter()
-    {
-        Debug.Log("Entering Chase State");
-    }
-
-    public override void OnStateExit()
-    {
-        Debug.Log("Exiting Chase State");
     }
 
     //we reached the player?
     private bool ReachedPlayer()
     {
-        return Vector3.Distance(enemy.transform.position, enemy.target.position) < 2.0f;
+        return Vector3.Distance(Enemy.transform.position, Enemy.Target.position) < 2.0f;
     }
 
     //we lost the player? Damn!
     private bool LostPlayer()
     {
-        return Vector3.Distance(enemy.transform.position, enemy.target.position) > 15.0f;
+        return Vector3.Distance(Enemy.transform.position, Enemy.Target.position) > Enemy.SeeingDistance;
     }
 }

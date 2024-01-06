@@ -106,7 +106,7 @@ public class GrenadeScript : MonoBehaviour {
 			if (hit.GetComponent<Collider>().tag == "Enemy")
 			{
 				//Toggle "explode" on explosive barrel object
-				hit.gameObject.GetComponent<EnemyAi>().SetState(new DeadState(hit.gameObject.GetComponent<EnemyAi>()));
+				hit.gameObject.GetComponent<EnemyAI>().SetState(new DeadState(hit.gameObject.GetComponent<EnemyAI>()));
 			}
 		}
 

@@ -1,60 +1,46 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class WanderState : State
 {
-    private float wanderRadius = 20f;
-    private float wanderSpeed = 0.5f;
+    private float _WanderRadius = 20f;
+    private float _WanderSpeed = 0.3f;
     private float viewDistance = 10f;
     private float FOV = 180f;
 
-    private Vector3 wanderPoint;
-    private NavMeshAgent navMeshAgent;
-    private Animator anim;
+    public Vector3 _WanderPoint;
 
-    public WanderState(EnemyAi enemy) : base(enemy)
+    public WanderState(EnemyAI enemy) : base(enemy)
     {
         stateName = "Wander";
-
-        navMeshAgent = enemy.navMeshA;
-        anim = enemy.anim;
-        wanderPoint = new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z);
+        _WanderPoint = RandomWanderPoint();
+        enemy.Agent.speed = _WanderSpeed;
+        enemy.Agent.SetDestination(_WanderPoint);
+        enemy.Anim.SetInteger("Speed", 1);
     }
 
     public override void Action()
     {
-        Wander();
-        anim.SetInteger("Speed", 1);
-        navMeshAgent.speed = wanderSpeed;
+        Wander();      
 
         if (FindPlayers())
         {
-            enemy.SetState(new ChaseState(enemy));
+            Enemy.SetState(new ChaseState(Enemy));
         }
     }
-
-    public override void OnStateEnter()
-    {
-        Debug.Log("Entering Wander State");
-    }
-
-    public override void OnStateExit()
-    {
-        Debug.Log("Exiting Wander State");
-    }
-
 
     //Search players in the area
     private bool FindPlayers()
     {
-        if (Vector3.Angle(Vector3.forward, enemy.transform.InverseTransformPoint(enemy.target.position)) < FOV / 2f)
+        if (Vector3.Angle(Vector3.forward, Enemy.transform.InverseTransformPoint(Enemy.Target.position)) < FOV / 2f)
         {
-            if (Vector3.Distance(enemy.target.position, enemy.transform.position) < viewDistance)
+            if (Vector3.Distance(Enemy.Target.position, Enemy.transform.position) < viewDistance)
             {
                 RaycastHit hit;
-                if (Physics.Linecast(enemy.transform.position, enemy.target.position, out hit, -1))
+                if (Physics.Linecast(Enemy.transform.position, Enemy.Target.position, out hit, -1))
                 {
                     if (hit.transform.CompareTag("Player"))
                     {
@@ -71,27 +57,32 @@ public class WanderState : State
     {
         if (ReachedPoint())
         {
-            wanderPoint = RandomWanderPoint();
-            //navMeshAgent.SetDestination(wanderPoint);
+            Enemy.StartCoroutine(SetNewDestination());
         }
-        else
-        {
-            navMeshAgent.SetDestination(wanderPoint);
-        }
+    }
+
+    IEnumerator SetNewDestination()
+    {
+        _WanderPoint = RandomWanderPoint();
+        Enemy.Anim.SetInteger("Condition", 2);
+        yield return new WaitForSecondsRealtime(Random.Range(2.5f, 5f));
+        Enemy.Anim.SetInteger("Condition", 0);
+        Enemy.Agent.SetDestination(_WanderPoint);
     }
 
     //the random point to reach
     private Vector3 RandomWanderPoint()
     {
-        Vector3 randomPoint = (Random.insideUnitSphere * wanderRadius) + enemy.transform.position;
+        Vector3 randomPoint = (Random.insideUnitSphere * _WanderRadius) + Enemy.transform.position;
         NavMeshHit navMeshHit;
-        NavMesh.SamplePosition(randomPoint, out navMeshHit, wanderRadius, -1);
+        NavMesh.SamplePosition(randomPoint, out navMeshHit, _WanderRadius, -1);
+        Debug.Log($"Wander point is {randomPoint.x}");
         return new Vector3(navMeshHit.position.x, navMeshHit.position.y, navMeshHit.position.z);
     }
 
     //return true if the wander point has been reached
     private bool ReachedPoint()
     {
-        return Vector3.Distance(enemy.transform.position, enemy.target.position) < 0.5f;
+        return Vector3.Distance(Enemy.transform.position, _WanderPoint) < 0.5f;
     }
 }

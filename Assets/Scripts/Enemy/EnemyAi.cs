@@ -5,17 +5,25 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
-public class EnemyAi : MonoBehaviour
+public class EnemyAI : MonoBehaviour
 {
     private State currentState;
 
-    public NavMeshAgent navMeshA;
-    public Transform target;
-    public Animator anim;
+    public NavMeshAgent Agent { get { return _NavMeshAgent; } }
+    public Transform Target { get { return _Target; } }
+    public Animator Anim { get { return _Animator; } }
+
+    private NavMeshAgent _NavMeshAgent;
+    private Transform _Target;
+    private Animator _Animator;
+
+    public float SeeingDistance { get { return _SeeingDistance; } }
+
+    [SerializeField]
+    private float _SeeingDistance = 10;
 
     [Header("Score")]
     public float totalScore;
-
 
     [Header("UI Elements")]
     public Image targetEnemy;
@@ -31,19 +39,16 @@ public class EnemyAi : MonoBehaviour
 
     private void Awake()
     {
-        target = GameObject.FindGameObjectWithTag("Player").transform;
-        navMeshA = GetComponent<NavMeshAgent>();
-        anim = GetComponent<Animator>();
+        _Target = GameObject.FindGameObjectWithTag("Player").transform;
+        _NavMeshAgent = GetComponent<NavMeshAgent>();
+        _Animator = GetComponent<Animator>();
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
     }
 
     void Start()
     {
-        //new
         SetState(new WanderState(this));
-
-        //old
         SetRigidBodyState(true);
         SetColliderBodyState(false);
 
@@ -73,7 +78,7 @@ public class EnemyAi : MonoBehaviour
         //hitted by a bullet
         if (collision.collider.tag == "Bullet")
         {
-            anim.SetInteger("Condition", 1);
+            _Animator.SetInteger("Condition", 1);
             StartCoroutine(ResetConditionOnCollision());
             currentHealth -= 20.5f;
             healthBar.SetHealth(currentHealth);
@@ -83,7 +88,7 @@ public class EnemyAi : MonoBehaviour
 
         if(collision.collider.tag == "Knife")
         {
-            anim.SetInteger("Condition", 1);
+            Anim.SetInteger("Condition", 1);
             StartCoroutine(ResetConditionOnCollision());
             currentHealth -= 35f;
             healthBar.SetHealth(currentHealth);
@@ -96,7 +101,7 @@ public class EnemyAi : MonoBehaviour
             Debug.Log("I collide with the player");
             if (currentState.stateName == "Attack")
             {
-                if (Vector3.Distance(transform.position, target.position) < 1.8f)
+                if (Vector3.Distance(transform.position, _Target.position) < 1.8f)
                 {
                     Debug.Log("The target will die!");
                     float randomDamage = UnityEngine.Random.Range(10f, 25f);
@@ -117,26 +122,26 @@ public class EnemyAi : MonoBehaviour
 
     IEnumerator IdleForAMoment()
     {
-        anim.SetInteger("Condition", 2);
-        navMeshA.isStopped = true;
+        Anim.SetInteger("Condition", 2);
+        _NavMeshAgent.isStopped = true;
         //wait a certain amount of time
         float randomNumber = Random.Range(250f, 300f);
         yield return new WaitForSeconds(randomNumber * Time.deltaTime);
         //reset the condition
-        anim.SetInteger("Condition", 0);
+        Anim.SetInteger("Condition", 0);
         //reset speed
-        navMeshA.isStopped = false;
+        Agent.isStopped = false;
     }
 
     IEnumerator ResetConditionOnCollision()
     {
-        navMeshA.isStopped = true;
+        _NavMeshAgent.isStopped = true;
         //wait a certain amount of time
         yield return new WaitForSeconds(10f* Time.deltaTime);
         //reset the condition
-        anim.SetInteger("Condition", 0);
+        Anim.SetInteger("Condition", 0);
         //reset speed
-        navMeshA.isStopped = false;
+        Agent.isStopped = false;
     }
 
     IEnumerator DestroyEnemy()
@@ -187,6 +192,19 @@ public class EnemyAi : MonoBehaviour
 
         if (currentState != null)
             currentState.OnStateEnter();
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (currentState != null)
+        {
+            if (currentState.GetType() == typeof(WanderState))
+            {
+                // Draw a yellow sphere at the transform's position
+                Gizmos.color = Color.red;
+                Gizmos.DrawSphere((currentState as WanderState)._WanderPoint, 0.1f);
+            }
+        }
     }
 }
 

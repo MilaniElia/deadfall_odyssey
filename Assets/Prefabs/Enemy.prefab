@@ -7,9 +7,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 109526, guid: 48b470c6a762f60438c631f219257520, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 137502, guid: 48b470c6a762f60438c631f219257520, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 153682, guid: 48b470c6a762f60438c631f219257520, type: 3}
       propertyPath: m_Name
-      value: Character_Male_Hoodie_01
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 153682, guid: 48b470c6a762f60438c631f219257520, type: 3}
       propertyPath: m_TagString
@@ -18,6 +26,10 @@ PrefabInstance:
     - target: {fileID: 156234, guid: 48b470c6a762f60438c631f219257520, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 178738, guid: 48b470c6a762f60438c631f219257520, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 407374, guid: 48b470c6a762f60438c631f219257520, type: 3}
       propertyPath: m_RootOrder
@@ -92,10 +104,25 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.z
       value: 9.896755
       objectReference: {fileID: 0}
+    - target: {fileID: 1195321653637084545, guid: 48b470c6a762f60438c631f219257520,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1472712554091483160, guid: 48b470c6a762f60438c631f219257520,
         type: 3}
       propertyPath: m_StoppingDistance
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1935029239823923126, guid: 48b470c6a762f60438c631f219257520,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 21.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 1935029239823923126, guid: 48b470c6a762f60438c631f219257520,
+        type: 3}
+      propertyPath: m_Center.y
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 2235284386485860793, guid: 48b470c6a762f60438c631f219257520,
         type: 3}

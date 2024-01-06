@@ -11,6 +11,9 @@ TagManager:
   - Granade
   - Enemy
   - Menu
+  - Metal
+  - ExplosiveBarrel
+  - Ocean
   layers:
   - Default
   - TransparentFX

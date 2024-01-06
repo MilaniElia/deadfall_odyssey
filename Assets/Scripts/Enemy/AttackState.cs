@@ -4,39 +4,43 @@ using UnityEngine;
 
 public class AttackState : State
 {
-    public AttackState(EnemyAi enemy) : base(enemy)
+    public AttackState(EnemyAI enemy) : base(enemy)
     {
         stateName = "Attack";
     }
 
     public override void Action()
     {
-        Attack();
-        enemy.navMeshA.isStopped = true;
         if (ToFarToAttack())
         {
-            enemy.SetState(new ChaseState(enemy));
+            Enemy.SetState(new ChaseState(Enemy));
         }
-    }
-
-    public override void OnStateEnter()
-    {
-        Debug.Log("Entering Attack State");
-    }
-
-    public override void OnStateExit()
-    {
-        Debug.Log("Exiting Attack State");
+        else
+        {
+            Enemy.Agent.isStopped = true;
+            Enemy.Agent.speed = 0;
+            Attack();
+        }
     }
 
     private void Attack()
     {
         int randomAttack = (int)Random.Range(10, 13);
-        enemy.anim.SetInteger("Condition", randomAttack);
+        Enemy.Anim.SetInteger("Condition", randomAttack);
     }
 
     private bool ToFarToAttack()
     {
-        return (Vector3.Distance(enemy.transform.position, enemy.target.position) > 1.8f);
+        return (Vector3.Distance(Enemy.transform.position, Enemy.Target.position) > 1.8f);
+    }
+
+    private void EnableColliders()
+    {
+
+    }
+
+    private void DisableColliders()
+    {
+
     }
 }

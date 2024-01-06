@@ -6,14 +6,14 @@ using UnityEngine;
 public class WinScript : MonoBehaviour
 {
     [Header("Enemy List"), SerializeField]
-    private List<EnemyAi> Enemies;
+    private List<EnemyAI> Enemies;
 
     [Header("Win Canvas")]
     public GameObject gameOverCanvas;
 
     public void Start()
     {
-        Enemies = GameObject.FindObjectsOfType<EnemyAi>().ToList();
+        Enemies = GameObject.FindObjectsOfType<EnemyAI>().ToList();
     }
 
 
@@ -28,7 +28,7 @@ public class WinScript : MonoBehaviour
 
     private bool CheckEnemiesState()
     {
-        foreach(EnemyAi enemy in Enemies)
+        foreach(EnemyAI enemy in Enemies)
         {
             if(enemy.currentHealth > 0)
             {

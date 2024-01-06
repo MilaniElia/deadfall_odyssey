@@ -26,10 +26,16 @@ public class KeyButtonTrigger : MonoBehaviour
 	[Tooltip("To edit the look of the text Go to Assets > Create > GUIskin. Add the new Guiskin to the Custom Skin property. If you select the GUIskin in your project tab you can now adjust the font, colour, size etc of the text")]
 	public GUISkin customSkin;
 
+	private GameObject _MenuCanvas;
 
 
-	// if this script is on an object with a collider display the Gui
-	void OnTriggerEnter()
+    private void Start()
+    {
+        _MenuCanvas = GameObject.FindGameObjectWithTag("Menu").transform.GetChild(0).gameObject;
+    }
+
+    // if this script is on an object with a collider display the Gui
+    void OnTriggerEnter()
 	{
 		GuiOn = true;
 	}
@@ -42,26 +48,25 @@ public class KeyButtonTrigger : MonoBehaviour
 
 	void OnGUI()
 	{
-
-		if (customSkin != null)
+		if (!_MenuCanvas.active)
 		{
-			GUI.skin = customSkin;
+			if (customSkin != null)
+			{
+				GUI.skin = customSkin;
+			}
+
+			if (GuiOn == true)
+			{
+				// Make a group on the center of the screen
+				GUI.BeginGroup(new Rect((Screen.width - BoxSize.width) / 2, (Screen.height - BoxSize.height) / 2, BoxSize.width, BoxSize.height));
+				// All rectangles are now adjusted to the group. (0,0) is the topleft corner of the group.
+
+				GUI.Label(BoxSize, Text);
+
+				// End the group we started above. This is very important to remember!
+				GUI.EndGroup();
+
+			}
 		}
-
-		if (GuiOn == true)
-		{
-			// Make a group on the center of the screen
-			GUI.BeginGroup(new Rect((Screen.width - BoxSize.width) / 2, (Screen.height - BoxSize.height) / 2, BoxSize.width, BoxSize.height));
-			// All rectangles are now adjusted to the group. (0,0) is the topleft corner of the group.
-
-			GUI.Label(BoxSize, Text);
-
-			// End the group we started above. This is very important to remember!
-			GUI.EndGroup();
-
-		}
-
-
 	}
-
 }
