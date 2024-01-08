@@ -5,7 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(MeshCollider))]
 public class GlassBehaviour : MonoBehaviour
 {
-    [SerializeField] private GameObject sensorPrefab;
     [SerializeField] private Vector3 splitNormal = Vector3.up; // Normal of the plane for splitting
     private MeshRenderer _MeshRenderer;
 
@@ -16,7 +15,7 @@ public class GlassBehaviour : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log($"GLASS BEHAVIOUR - Triggered with {collision.gameObject.name}");
+        Debug.Log($"GLASS BEHAVIOUR - Collision with {collision.gameObject.name}");
         // Check if the collision involves an object that can split the mesh
         if (collision.gameObject.name.ToLower().Contains("bullet"))
         {

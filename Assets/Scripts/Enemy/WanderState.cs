@@ -76,7 +76,7 @@ public class WanderState : State
         Vector3 randomPoint = (Random.insideUnitSphere * _WanderRadius) + Enemy.transform.position;
         NavMeshHit navMeshHit;
         NavMesh.SamplePosition(randomPoint, out navMeshHit, _WanderRadius, -1);
-        Debug.Log($"Wander point is {randomPoint.x}");
+        //Debug.Log($"Wander point is {randomPoint.x}");
         return new Vector3(navMeshHit.position.x, navMeshHit.position.y, navMeshHit.position.z);
     }
 
